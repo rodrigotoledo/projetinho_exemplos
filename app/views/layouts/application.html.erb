@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Application</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+  </head>
+
+  <body>
+    <div class="bg-gray-50 h-screen overflow-y-scroll hide-scrollbar">
+      <div class="shadow-sm border-b bg-white sticky top-0 z-50 pb-2 pt-2"><%= render "components/header" %></div>
+      <main class="container mx-auto p-10">
+        <%= yield %>
+      </main>
+    </div>
+  </body>
+</html>

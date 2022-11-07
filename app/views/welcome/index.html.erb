@@ -1,0 +1,16 @@
+<div>
+  <h1 class="font-bold text-4xl">Welcome#index</h1>
+  <p>Find me in app/views/welcome/index.html.erb</p>
+</div>
+<%= turbo_stream_from :results_from_model %>
+<%= turbo_frame_tag :results_from_model do %>
+<div id="results_from_model"></div>
+<% end %>
+
+<hr>
+<%=turbo_stream_from :categories_service %>
+<%= turbo_frame_tag :categories_service do %>
+<div id="categories">
+<%= render  "random" %>
+</div>
+<% end %>

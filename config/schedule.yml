@@ -1,0 +1,4 @@
+hard_job:
+  cron: "*/1 * * * *"
+  class: "HardJob"
+  queue: hard_job

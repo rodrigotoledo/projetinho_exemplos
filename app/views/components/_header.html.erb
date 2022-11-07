@@ -1,0 +1,19 @@
+<header class='flex justify-between max-w-6xl mx-5 lg:mx-auto'>
+  <div class="relative items-center hidden lg:inline-grid w-24"><%= link_to image_tag("https://links.papareact.com/ocw", layout: "fill", object_fit: "contain"), root_path %></div>
+  <div class="relative items-center lg:hidden w-10 flex-shrink-0"><%= link_to image_tag("https://links.papareact.com/jjm", layout: "fill", object_fit: "contain"), root_path %></div>
+
+  <div class="max-w-xs">
+    <%= render "components/header_form" %>
+    <div id="results"></div>
+  </div>
+
+  <div class="flex items-center justify-end space-x-4">
+    <%= link_to heroicon("home", variant: "solid", class: "h-6 hidden md:inline-flex cursor-pointer hover:scale-125 duration-150 ease-out"), root_path %>
+    <% if current_user %>
+      <%= button_to heroicon("arrow-right-on-rectangle", variant: "solid", class: "h-6 text-gray-400 cursor-pointer hover:scale-125 transition-all duration-150 ease-out"), destroy_user_session_path, method: :delete, alt: "profile picture", class: "h-10 rounded-full cursor-pointer", data: { turbo: "false" } %>
+    <% else %>
+      <%= link_to heroicon("user-plus", variant: "solid", class: "h-6 text-gray-400 cursor-pointer hover:scale-125 transition-all duration-150 ease-out"), new_user_registration_path, class: "link" %>
+      <%= link_to heroicon("user-circle", class: "h-6 text-gray-400 cursor-pointer hover:scale-125 transition-all duration-150 ease-out"), new_user_session_path, class: "link" %>
+    <% end %>
+  </div>
+</header>
