@@ -96,3 +96,5 @@ gem 'rails_heroicon'
 gem 'redis'
 gem 'sidekiq', '6.5.7'
 gem "sidekiq-cron"
+
+gem "doorkeeper", "~> 5.6"
