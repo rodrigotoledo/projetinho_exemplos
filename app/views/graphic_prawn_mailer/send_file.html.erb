@@ -1,1 +1,12 @@
-Graphic its here
+<h1>Graphic its here</h1>
+Categories
+<% Category.all.each do |category| %>
+<hr />
+<h3><%=category.name%></h3>
+<% end %>
+<br />
+Vehicles
+<% Vehicle.all.each do |vehicle| %>
+<hr />
+<h3><%=vehicle.name%></h3>
+<% end %>

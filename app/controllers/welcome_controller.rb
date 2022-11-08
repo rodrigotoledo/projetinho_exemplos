@@ -14,4 +14,9 @@ class WelcomeController < ApplicationController
       format.turbo_stream
     end
   end
+
+  def generate_graphic
+    GraphicJob.perform_later
+    redirect_to root_path
+  end
 end
