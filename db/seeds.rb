@@ -16,8 +16,8 @@ User.create!(email: 'admin@test.com', password: 'aassdd123', password_confirmati
   Vehicle.create(name: Faker::Vehicle.make_and_model)
 end
 
-if Doorkeeper::Application.count.zero?
-  Doorkeeper::Application.create(name: 'Web client', redirect_uri: '', scopes: '')
-  Doorkeeper::Application.create(name: 'IOS client', redirect_uri: '', scopes: '')
-  Doorkeeper::Application.create(name: 'Android client', redirect_uri: '', scopes: '')
-end
+# if Doorkeeper::Application.count.zero?
+#   Doorkeeper::Application.create(name: 'Web client', redirect_uri: '', scopes: '')
+#   Doorkeeper::Application.create(name: 'IOS client', redirect_uri: '', scopes: '')
+#   Doorkeeper::Application.create(name: 'Android client', redirect_uri: '', scopes: '')
+# end
