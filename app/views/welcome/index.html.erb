@@ -1,15 +1,6 @@
 <div class='my-2 bg-slate-200 rounded-md p-2'>
   <h1 class="font-bold text-4xl">Welcome#index</h1>
   <p class='text-lg'>Find me in app/views/welcome/index.html.erb</p>
-  <%=@application.as_json %>
-</div>
-
-<div class='my-2 bg-slate-200 rounded-md p-2'>
-  <ul>
-    <li class='my-2 w-100'><%= link_to "Vehicles", vehicles_path, class: 'font-bold' %></li>
-    <li class='my-2'><%= link_to "API Vehicles", api_v1_vehicles_path, class: 'font-bold' %></li>
-    <li class='my-2'><%= link_to "API Mobile Vehicles", api_v1_mobile_vehicles_path, class: 'font-bold' %></li>
-  </ul>
 </div>
 <%= turbo_stream_from :results_from_model %>
 <%= turbo_frame_tag :results_from_model do %>

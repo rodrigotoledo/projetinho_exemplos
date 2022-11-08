@@ -88,7 +88,10 @@ group :development, :test do
   gem 'rufo'
   gem 'simplecov', require: false
 end
+gem 'rack-cors'
+gem 'omniauth'
 gem 'devise'
+gem 'devise_token_auth', git: 'https://github.com/lynndylanhurley/devise_token_auth'
 gem 'dotenv-rails'
 gem 'faker'
 gem 'pg'
@@ -98,3 +101,6 @@ gem 'sidekiq', '6.5.7'
 gem "sidekiq-cron"
 
 gem "doorkeeper", "~> 5.6"
+gem 'highcharts-export-image', git: 'https://github.com/Oxyless/highcharts-export-image'
+gem 'prawn'
+gem 'phantomjs'
