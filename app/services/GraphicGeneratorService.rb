@@ -71,9 +71,25 @@ class GraphicGeneratorService
           }]
       }
     eos
-    file = Rails.root.join('tmp',File.basename("#{SecureRandom.urlsafe_base64}grafico_glicemia.png"))
-    path = file.to_s
-    Highcharts::Export::Image.chart_to_img(options_js, path)
-    path
+    files = []
+    10.times.each do
+      file = Rails.root.join('tmp',File.basename("#{SecureRandom.urlsafe_base64}grafico_glicemia.png"))
+      Highcharts::Export::Image.chart_to_img(options_js, file.to_s)
+      files << file.to_s
+    end
+
+    file_pdf = Rails.root.join('tmp',File.basename("#{SecureRandom.urlsafe_base64}grafico_glicemia.pdf"))
+    Prawn::Document.generate(file_pdf.to_s, :page_layout => :landscape) do
+      files.each do |file|
+        image file.to_s, :at => [50,450], :width => 450
+        start_new_page
+      end
+    end
+
+    GraphicPrawnMailer.send_file(file_pdf.to_s).deliver_now
+    files.each do |file|
+      File.delete(file.to_s)
+    end
+    File.delete(file_pdf.to_s)
   end
 end

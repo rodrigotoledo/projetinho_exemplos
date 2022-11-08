@@ -33,7 +33,7 @@ Rails.application.configure do
   config.assets.compile = false
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  # config.asset_host = "http://assets.example.com"
+  config.asset_host = "https://ror7-example.herokuapp.com"
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
@@ -91,5 +91,15 @@ Rails.application.configure do
   end
 
   # Do not dump schema after migrations.
+  config.action_mailer.default_url_options = { host: 'ror7-example.herokuapp.com' }
   config.active_record.dump_schema_after_migration = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => ENV['mailer_owner'],
+    :password             => ENV['mailer_password'],
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
 end
