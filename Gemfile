@@ -87,7 +87,6 @@ group :development, :test do
   gem 'rubocop-rspec'
   gem 'rufo'
   gem 'simplecov', require: false
-  gem 'phantomjs'
 end
 gem 'rack-cors'
 gem 'omniauth'
@@ -105,3 +104,4 @@ gem "sidekiq-cron"
 gem 'highcharts-export-image', git: 'https://github.com/Oxyless/highcharts-export-image'
 gem 'prawn'
 gem 'matrix'
+gem 'phantomjs'

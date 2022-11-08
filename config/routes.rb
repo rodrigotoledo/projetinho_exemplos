@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/', to: 'profiles#search', as: :search_profile
   get '/generate_graphic', to: 'welcome#generate_graphic', as: :generate_graphic
   devise_for :users
-  # mount Sidekiq::Web => '/sidekiq'
+  mount Sidekiq::Web => '/sidekiq'
 
   # TODO: entender melhor doorkeeper
   # use_doorkeeper
