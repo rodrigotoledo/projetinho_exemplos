@@ -5,7 +5,7 @@ class GraphicGeneratorService
         if Rails.env.development?
           config.phantomjs = Phantomjs.path
         else
-          config.phantomjs = '/usr/local/bin:/usr/bin:/bin:/app/vendor/phantomjs/bin'
+          config.phantomjs = '/app/vendor/phantomjs/bin/phantomjs'
         end
     end
 
