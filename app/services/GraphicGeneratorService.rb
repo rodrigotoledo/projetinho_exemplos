@@ -2,7 +2,11 @@ class GraphicGeneratorService
   def self.generate
     Highcharts::Export::Image.configure do |config|
         config.default_options = { :type => :png }
-        config.phantomjs = Phantomjs.path
+        if Rails.env.development?
+          config.phantomjs = Phantomjs.path
+        else
+          config.phantomjs = '/usr/local/bin:/usr/bin:/bin:/app/vendor/phantomjs/bin'
+        end
     end
 
     options_js = <<-eos
