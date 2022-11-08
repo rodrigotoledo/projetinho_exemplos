@@ -1,5 +1,4 @@
-class Api::V1::VehiclesController < ApplicationController
-  skip_before_action :authenticate_user!
+class Api::V1::VehiclesController < ApiController
   before_action :set_vehicle, only: %i[show edit update destroy]
 
   # GET /vehicles or /vehicles.json
