@@ -1,7 +1,7 @@
 class GraphicGeneratorService
   def self.generate
     Highcharts::Export::Image.configure do |config|
-        config.default_options = { :type => :png }
+        config.default_options = { :type => :svg }
         config.phantomjs = Phantomjs.path
         # if Rails.env.development?
         # else
@@ -77,7 +77,7 @@ class GraphicGeneratorService
     eos
     files = []
     10.times.each do
-      file = Rails.root.join('tmp',File.basename("#{SecureRandom.urlsafe_base64}grafico_glicemia.png"))
+      file = Rails.root.join('tmp',File.basename("#{SecureRandom.urlsafe_base64}grafico_glicemia.svg"))
       Highcharts::Export::Image.chart_to_img(options_js, file.to_s)
       files << file.to_s
     end
@@ -85,14 +85,15 @@ class GraphicGeneratorService
     file_pdf = Rails.root.join('tmp',File.basename("#{SecureRandom.urlsafe_base64}grafico_glicemia.pdf"))
     Prawn::Document.generate(file_pdf.to_s, :page_layout => :landscape) do
       files.each do |file|
-        image file.to_s, :at => [50,450], :width => 450
+        # image file.to_s, :at => [50,450], :width => 450
+        draw_text 'teste', :at => [50,450]
         start_new_page
       end
     end
 
     GraphicPrawnMailer.send_file(file_pdf.to_s).deliver_now
     files.each do |file|
-      File.delete(file.to_s)
+      # File.delete(file.to_s)
     end
     File.delete(file_pdf.to_s)
   end
