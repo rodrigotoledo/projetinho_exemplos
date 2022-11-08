@@ -104,3 +104,4 @@ gem "sidekiq-cron"
 gem 'highcharts-export-image', git: 'https://github.com/Oxyless/highcharts-export-image'
 gem 'prawn'
 gem 'phantomjs'
+gem 'matrix'
