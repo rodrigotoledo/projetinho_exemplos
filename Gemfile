@@ -100,7 +100,7 @@ gem 'redis'
 gem 'sidekiq', '6.5.7'
 gem "sidekiq-cron"
 
-gem "doorkeeper", "~> 5.6"
+# gem "doorkeeper", "~> 5.6"
 gem 'highcharts-export-image', git: 'https://github.com/Oxyless/highcharts-export-image'
 gem 'prawn'
 gem 'phantomjs'
