@@ -105,3 +105,4 @@ gem 'highcharts-export-image', git: 'https://github.com/Oxyless/highcharts-expor
 gem 'prawn'
 gem 'matrix'
 gem 'phantomjs'
+gem "gruff", "~> 0.19.0"

@@ -9,12 +9,10 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 User.create!(email: 'admin@test.com', password: 'aassdd123', password_confirmation: 'aassdd123')
-
-50.times.each do
+10.times.each do
   User.create!(email: Faker::Internet.email, password: 'aassdd123', password_confirmation: 'aassdd123')
-  Category.create(name: Faker::Movie.title)
-  Vehicle.create(name: Faker::Vehicle.make_and_model)
 end
+
 
 # if Doorkeeper::Application.count.zero?
 #   Doorkeeper::Application.create(name: 'Web client', redirect_uri: '', scopes: '')

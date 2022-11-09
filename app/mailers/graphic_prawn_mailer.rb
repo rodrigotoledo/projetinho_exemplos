@@ -3,6 +3,6 @@ class GraphicPrawnMailer < ApplicationMailer
 
   def send_file(path)
     attachments['graphic.pdf'] = File.read(path)
-    mail(to: ENV['mailer_to'], subject: 'grafico pelo email com prawn')
+    mail(to: ENV['mailer_to'], subject: "grafico pelo email com prawn - #{Rails.env}")
   end
 end

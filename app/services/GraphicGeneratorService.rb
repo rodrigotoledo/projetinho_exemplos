@@ -1,99 +1,54 @@
 class GraphicGeneratorService
   def self.generate
-    Highcharts::Export::Image.configure do |config|
-        config.default_options = { :type => :svg }
-        config.phantomjs = Phantomjs.path
-        # if Rails.env.development?
-        # else
-        #   config.phantomjs = '/app/vendor/phantomjs/bin/phantomjs'
-        # end
-    end
+    category_data = Category.all
+    category_data = category_data.group_by{|t| "#{t.created_at.year}-#{t.created_at.month}-#{t.created_at.day}"}
+    categories = category_data.values.flatten
+    category_labels = {}
+    category_data.keys.each_with_index{|date,index| category_labels[index] = date}
+    category_dates = category_data.keys.map.with_index{|date,index| {index => date}}.map{|t| t.values}.flatten
 
-    options_js = <<-eos
-      {
-          chart: {
-        type: 'spline',
-        width: 1000,
-        height: 600
-            },
-              title: {
-        text: 'Monthly Average Temperature'
-            },
-              subtitle: {
-        text: 'Source: WorldClimate.com'
-            },
-              xAxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-               'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-            },
-              yAxis: {
-        title: {
-            text: 'Temperature'
-          },
-                  labels: {
-            formatter: function () {
-          return this.value + '°';
-            }
-        }
-          },
-              tooltip: {
-        crosshairs: true,
-                  shared: true
-            },
-              plotOptions: {
-        spline: {
-            marker: {
-          radius: 4,
-                          lineColor: '#666666',
-                          lineWidth: 1
-              }
-        }
-          },
-              series: [{
-                  name: 'Tokyo',
-          marker: {
-                      symbol: 'square'
-              },
-          data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, {
-              y: 26.5,
-            marker: {
-            symbol: 'url(http://www.highcharts.com/demo/gfx/sun.png)'
-                }
-          }, 23.3, 18.3, 13.9, 9.6]
+    vehicle_data = Vehicle.all
+    vehicle_data = vehicle_data.group_by{|t| "#{t.created_at.year}-#{t.created_at.month}-#{t.created_at.day}"}
+    vehicles = vehicle_data.values.flatten
+    vehicle_labels = {}
+    vehicle_data.keys.each_with_index{|date,index| vehicle_labels[index] = date}
+    vehicle_dates = vehicle_data.keys.map.with_index{|date,index| {index => date}}.map{|t| t.values}.flatten
 
-          }, {
-                  name: 'London',
-          marker: {
-                      symbol: 'diamond'
-              },
-          data: [{
-              y: 3.9,
-            marker: {
-            symbol: 'url(http://www.highcharts.com/demo/gfx/snow.png)'
-                }
-          }, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-          }]
-      }
-    eos
     files = []
-    10.times.each do
-      file = Rails.root.join('tmp',File.basename("#{SecureRandom.urlsafe_base64}grafico_glicemia.svg"))
-      Highcharts::Export::Image.chart_to_img(options_js, file.to_s)
-      files << file.to_s
+    g = Gruff::Line.new(500)
+    g.title = 'Categories - Number of Views'
+    g.labels = category_labels
+    categories.pluck(:name).uniq.each do |category_name|
+      g.data category_name, category_dates.map{|t| Category.where(name: category_name).where("created_at BETWEEN ? AND ?", t.to_time.beginning_of_day, t.to_time.end_of_day).sum(:qty_of_views) }
     end
+
+    file = Rails.root.join('tmp',File.basename("#{SecureRandom.urlsafe_base64}.png"))
+    g.write(file.to_s)
+    files << file.to_s
+
+    g = Gruff::Line.new(500)
+    g.title = 'Vehicles - Number of Views'
+    g.labels = vehicle_labels
+    vehicles.pluck(:name).uniq.each do |vehicle_name|
+      g.data vehicle_name, vehicle_dates.map{|t| Vehicle.where(name: vehicle_name).where("created_at BETWEEN ? AND ?", t.to_time.beginning_of_day, t.to_time.end_of_day).sum(:qty_of_views) }
+    end
+
+    file = Rails.root.join('tmp',File.basename("#{SecureRandom.urlsafe_base64}.png"))
+    g.write(file.to_s)
+    files << file.to_s
 
     file_pdf = Rails.root.join('tmp',File.basename("#{SecureRandom.urlsafe_base64}grafico_glicemia.pdf"))
     Prawn::Document.generate(file_pdf.to_s, :page_layout => :landscape) do
       files.each do |file|
-        # image file.to_s, :at => [50,450], :width => 450
-        draw_text 'teste', :at => [50,450]
+        image file.to_s, fit: [450,450], position: :center
         start_new_page
       end
+      draw_text 'Thanks =)', :at => [10,10]
     end
 
     GraphicPrawnMailer.send_file(file_pdf.to_s).deliver_now
     files.each do |file|
-      # File.delete(file.to_s)
+      File.delete(file.to_s)
     end
     File.delete(file_pdf.to_s)
   end
