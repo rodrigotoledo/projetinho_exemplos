@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Instalando o pacote de maneira global
 
-Things you may want to cover:
+```sh
+npm install highcharts-export-server -g
+```
 
-* Ruby version
+Para subir o servidor execute
 
-* System dependencies
+```sh
+highcharts-export-server --enableServer 1
+```
 
-* Configuration
+### Gerando o grafico inline
 
-* Database creation
+É possível passar os argumentos de gráfico inline mas a idéia é passar um arquivo com os dados. Mas inicialmente rode:
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```sh
+curl -H "Content-Type: application/json" -X POST -d '{"infile":{"title": {"text": "Steep Chart"}, "xAxis": {"categories": ["Jan", "Feb", "Mar"]}, "series": [{"data": [29.9, 71.5, 106.4]}]}}' 127.0.0.1:7801 -o mychart.png
+```
