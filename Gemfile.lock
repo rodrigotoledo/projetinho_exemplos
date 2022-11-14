@@ -1,8 +1,15 @@
 GIT
-  remote: https://github.com/Oxyless/highcharts-export-image
-  revision: 3523d82d17cab99d316d21a5c9afcfc916442b5b
+  remote: https://github.com/SciRuby/daru-view
+  revision: 3c4e3de88dc214c47be207c1844fd80bcb3aba00
   specs:
-    highcharts-export-image (1.2)
+    daru-view (0.2.6)
+      actionview
+      daru
+      daru-data_tables
+      google_visualr
+      lazy_high_charts
+      nyaplot
+      thor
 
 GIT
   remote: https://github.com/lynndylanhurley/devise_token_auth
@@ -84,6 +91,7 @@ GEM
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
+    backports (3.23.0)
     bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.13.0)
@@ -104,6 +112,10 @@ GEM
     concurrent-ruby (1.1.10)
     connection_pool (2.3.0)
     crass (1.0.6)
+    daru (0.3)
+      packable (~> 1.3.13)
+    daru-data_tables (0.3.5)
+      daru
     debug (1.6.3)
       irb (>= 1.3.6)
       reline (>= 0.3.1)
@@ -119,6 +131,8 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
+    down (5.3.1)
+      addressable (~> 2.8)
     erubi (1.11.0)
     et-orbi (1.2.7)
       tzinfo
@@ -136,6 +150,7 @@ GEM
       raabro (~> 1.4)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    google_visualr (2.5.1)
     gruff (0.19.0)
       histogram
       rmagick (>= 4.2)
@@ -153,6 +168,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    hash-deep-merge (0.1.1)
     hashie (5.0.0)
     histogram (0.2.4.1)
     i18n (1.12.0)
@@ -170,6 +186,8 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     json (2.6.2)
+    lazy_high_charts (1.6.1)
+      hash-deep-merge
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -203,17 +221,19 @@ GEM
     notiffany (0.1.3)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    nyaplot (0.1.6)
     omniauth (2.1.0)
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
       rack-protection
     orm_adapter (0.5.0)
+    packable (1.3.15)
+      backports
     parallel (1.22.1)
     parser (3.1.2.1)
       ast (~> 2.4.1)
     pdf-core (0.9.0)
     pg (1.4.4)
-    phantomjs (2.1.1.0)
     prawn (2.4.0)
       pdf-core (~> 0.9.0)
       ttfunk (~> 1.7)
@@ -396,23 +416,24 @@ DEPENDENCIES
   bootsnap
   byebug
   capybara
+  daru-view!
   debug
   devise
   devise_token_auth!
   dotenv-rails
+  down
   factory_bot_rails
   faker
   gruff (~> 0.19.0)
   guard-rspec
-  highcharts-export-image!
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
   matrix
   omniauth
   pg
-  phantomjs
   prawn
+  pry
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.4)

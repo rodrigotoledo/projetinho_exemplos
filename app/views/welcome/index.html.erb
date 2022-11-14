@@ -9,7 +9,7 @@
 <% end %>
 
 <hr>
-<%=turbo_stream_from :categories_service %>
+<%= turbo_stream_from :categories_service %>
 <%= turbo_frame_tag :categories_service do %>
 <div id="categories">
 <%= render  "random" %>

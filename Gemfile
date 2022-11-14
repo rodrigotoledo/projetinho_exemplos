@@ -79,7 +79,6 @@ group :test do
 end
 
 group :development, :test do
-  gem 'sqlite3', '~> 1.4'
   gem 'byebug'
   gem 'factory_bot_rails'
   gem 'rspec-rails'
@@ -87,22 +86,24 @@ group :development, :test do
   gem 'rubocop-rspec'
   gem 'rufo'
   gem 'simplecov', require: false
+  gem 'sqlite3', '~> 1.4'
 end
-gem 'rack-cors'
-gem 'omniauth'
 gem 'devise'
 gem 'devise_token_auth', git: 'https://github.com/lynndylanhurley/devise_token_auth'
 gem 'dotenv-rails'
 gem 'faker'
+gem 'omniauth'
 gem 'pg'
+gem 'rack-cors'
 gem 'rails_heroicon'
 gem 'redis'
 gem 'sidekiq', '6.5.7'
-gem "sidekiq-cron"
+gem 'sidekiq-cron'
 
 # gem "doorkeeper", "~> 5.6"
-gem 'highcharts-export-image', git: 'https://github.com/Oxyless/highcharts-export-image'
-gem 'prawn'
+gem 'daru-view', git: 'https://github.com/SciRuby/daru-view'
+gem 'down'
+gem 'gruff', '~> 0.19.0'
 gem 'matrix'
-gem 'phantomjs'
-gem "gruff", "~> 0.19.0"
+gem 'prawn'
+gem 'pry'
