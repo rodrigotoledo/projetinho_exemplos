@@ -18,6 +18,5 @@ class WelcomeController < ApplicationController
   def generate_graphic
     # GraphicJob.perform_later
     GraphicGeneratorService.generate
-    redirect_to root_path
   end
 end
