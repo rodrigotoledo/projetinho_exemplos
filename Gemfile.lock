@@ -444,6 +444,7 @@ DEPENDENCIES
   rspec-rails
   rubocop-rails
   rubocop-rspec
+  ruby-vips
   rufo
   selenium-webdriver
   shoulda-matchers (~> 5.0)
