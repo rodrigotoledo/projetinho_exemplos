@@ -440,6 +440,7 @@ DEPENDENCIES
   rails-controller-testing
   rails_heroicon
   redis
+  rmagick
   rspec-rails
   rubocop-rails
   rubocop-rspec
