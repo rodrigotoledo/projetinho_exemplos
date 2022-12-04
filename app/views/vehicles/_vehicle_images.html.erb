@@ -1,0 +1,8 @@
+<p class="my-5">
+  <strong class="block font-medium mb-1">Image(s):</strong>
+  <div class="inline flex">
+    <% vehicle.images.each do |image| %>
+    <%= image_tag url_for(image.url), class: 'm-1'%>
+    <% end %>
+  </div>
+</p>

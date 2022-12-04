@@ -440,9 +440,11 @@ DEPENDENCIES
   rails-controller-testing
   rails_heroicon
   redis
+  rmagick
   rspec-rails
   rubocop-rails
   rubocop-rspec
+  ruby-vips
   rufo
   selenium-webdriver
   shoulda-matchers (~> 5.0)
