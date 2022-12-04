@@ -4,6 +4,8 @@
     <%= vehicle.name %>
   </p>
 
+  <%= render partial: "vehicle_images", locals: { vehicle: vehicle} %>
+
   <% if action_name != "show" %>
     <%= link_to "Show this vehicle", vehicle, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Edit this vehicle', edit_vehicle_path(vehicle), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
