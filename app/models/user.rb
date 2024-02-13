@@ -6,8 +6,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :omniauthable
   include DeviseTokenAuth::Concerns::User
+  before_create :skip_confirmation
   def self.authenticate(email, password)
     user = User.find_or_authentication(email: email)
     user&.valid_password?(password) ? user : nil
+  end
+
+
+  private
+
+  def skip_confirmation
+    self.confirmed_at = DateTime.now
   end
 end
