@@ -10,7 +10,7 @@
   <div class="flex items-center justify-end space-x-4">
     <%= link_to heroicon("home", variant: "solid", class: "h-6 hidden md:inline-flex cursor-pointer hover:scale-125 duration-150 ease-out"), root_path %>
     <%= link_to heroicon("truck", variant: "solid", class: "h-6 text-gray-400 cursor-pointer hover:scale-125 transition-all duration-150 ease-out"), vehicles_path %>
-    <% if current_user %>
+    <% if user_signed_in? %>
       <%= button_to heroicon("arrow-right-on-rectangle", variant: "solid", class: "h-6 text-gray-400 cursor-pointer hover:scale-125 transition-all duration-150 ease-out"), destroy_user_session_path, method: :delete, alt: "profile picture", class: "h-10 rounded-full cursor-pointer", data: { turbo: "false" } %>
     <% else %>
       <%= link_to heroicon("user-plus", variant: "solid", class: "h-6 text-gray-400 cursor-pointer hover:scale-125 transition-all duration-150 ease-out"), new_user_registration_path, class: "link" %>

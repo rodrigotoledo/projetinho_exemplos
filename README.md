@@ -1,5 +1,12 @@
 # README
 
+### Dependencias
+
+```sh
+sudo apt-get install libmagickwand-dev
+sudo apt-get install libvips
+```
+
 ### Instalando o pacote de maneira global
 
 ```sh

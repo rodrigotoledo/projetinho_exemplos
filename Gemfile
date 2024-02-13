@@ -87,10 +87,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
-  gem 'rufo'
   gem 'simplecov', require: false
   gem 'sqlite3', '~> 1.4'
 end
+gem 'rufo'
 gem 'devise'
 gem 'devise_token_auth', git: 'https://github.com/lynndylanhurley/devise_token_auth'
 gem 'dotenv-rails'
