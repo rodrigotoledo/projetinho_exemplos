@@ -30,7 +30,7 @@ gem 'tailwindcss-rails'
 gem 'jbuilder'
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+gem "redis", "~> 4.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -43,9 +43,6 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
-
-# Use Sass to process CSS
-# gem "sassc-rails"
 
 gem 'rmagick'
 gem 'ruby-vips'
@@ -87,26 +84,27 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
-  gem 'rufo'
   gem 'simplecov', require: false
-  gem 'sqlite3', '~> 1.4'
+  gem 'sqlite3'
 end
+gem 'rufo'
 gem 'devise'
 gem 'devise_token_auth', git: 'https://github.com/lynndylanhurley/devise_token_auth'
 gem 'dotenv-rails'
 gem 'faker'
 gem 'omniauth'
-gem 'pg'
 gem 'rack-cors'
 gem 'rails_heroicon'
-gem 'redis'
 gem 'sidekiq', '6.5.7'
 gem 'sidekiq-cron'
 
-# gem "doorkeeper", "~> 5.6"
 gem 'daru-view', git: 'https://github.com/SciRuby/daru-view'
 gem 'down'
 gem 'gruff', '~> 0.19.0'
 gem 'matrix'
 gem 'prawn'
 gem 'pry'
+
+group :production do
+  gem 'pg'
+end
