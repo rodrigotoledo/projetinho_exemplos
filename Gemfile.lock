@@ -439,7 +439,7 @@ DEPENDENCIES
   rails (~> 7.0.4)
   rails-controller-testing
   rails_heroicon
-  redis
+  redis (~> 4.0)
   rmagick
   rspec-rails
   rubocop-rails
@@ -452,7 +452,7 @@ DEPENDENCIES
   sidekiq-cron
   simplecov
   sprockets-rails
-  sqlite3 (~> 1.4)
+  sqlite3
   stimulus-rails
   tailwindcss-rails
   turbo-rails
